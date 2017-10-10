@@ -5,5 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Question.create(title: "Question 1")
-Question.create(title: "Question 2")
+Question.create(title: "Question 1",
+ description: "This is a description longer than fifty characters! Great!")
+Question.create(title: "Question 2",
+ description: "This is a description longer than fifty characters! Great!")
