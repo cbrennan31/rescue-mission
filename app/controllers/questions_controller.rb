@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers
   end
 
   def new
@@ -28,4 +29,5 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :description)
   end
+
 end

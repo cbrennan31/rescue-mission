@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  has_many :answers
+
   validates :title, presence: { message: "You must include a title." }
 
   validates :title, length: {
@@ -9,7 +11,7 @@ class Question < ApplicationRecord
   validates :description, presence: {
     message: "You must include a description."
   }
-  
+
   validates :description, length: {
     minimum: 50,
     message: "Your description should have a minimum of 50 characters."
