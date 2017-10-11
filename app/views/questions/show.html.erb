@@ -2,6 +2,7 @@
 
 <p>Description: <%= @question.description %></p>
 
+<%= link_to 'Edit Question', edit_question_path(@question) %>
 
 <h4>Answers:</h4>
 
@@ -11,4 +12,5 @@
   <% end %>
 </ul>
 
-<%= link_to 'Submit an answer', new_question_answer_path(@question.id) %>
+
+<%= link_to 'Submit an answer', new_question_answer_path(@question) %>
