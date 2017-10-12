@@ -20,7 +20,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.update(question_params)
     if @question.save
-      redirect_to @question, notice: 'Your question was successfully submitted.'
+      flash[:notice] = "Question successfully updated."
+      redirect_to @question
     else
       @errors = @question.errors.messages.values.flatten
       render action: 'edit'
@@ -36,7 +37,11 @@ class QuestionsController < ApplicationController
     @errors = []
 
     if @question.save
-      redirect_to @question, notice: 'Your question was successfully submitted.'
+      flash[:notice] = "Question successfully created."
+      @questions = Question.all
+      @questions = @questions.sort_by { |question| question.created_at }
+      @questions.reverse!
+      render action: 'index'
     else
       @errors = @question.errors.messages.values.flatten
       render action: 'new'
@@ -47,4 +52,9 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:title, :description)
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to questions_path
+  end
 end

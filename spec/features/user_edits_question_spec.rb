@@ -14,5 +14,6 @@ feature 'User visits show page' do
 
     expect(page).to have_content 'Meaning of life?'
     expect(page).to have_content "My feature tests are working! But I'm still really confused about the meaning of life."
+    expect(page).to have_content "Question successfully updated."
   end
 end

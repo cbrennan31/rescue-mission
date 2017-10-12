@@ -1,8 +1,16 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h4>Questions Index</h4>
 
 <ul>
   <% @questions.each do |question| %>
-    <li><%= link_to question.title, question_path(question) %></li>
+    <li>
+      <%= link_to question.title, question_path(question) %>
+      <%= link_to 'Delete', question_path(question), method: :delete %>
+    </li>
+
   <% end %>
 </ul>
 
